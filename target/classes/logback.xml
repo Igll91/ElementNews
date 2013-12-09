@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<contextName>Element</contextName>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE_LOGING" class="ch.qos.logback.core.FileAppender">
+		<file>c:/Users/Silvio/logs/userLoggings.log</file>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE_VIJESTI" class="ch.qos.logback.core.FileAppender">
+		<file>c:/Users/Silvio/logs/vijesti.log</file>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE_DATABASE" class="ch.qos.logback.core.FileAppender">
+		<file>c:/Users/Silvio/logs/database.log</file>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="silvio.vuk.element.news" additivity="false">
+		<appender-ref ref="FILE_VIJESTI"/>
+	</logger>
+
+	<logger name="silvio.vuk.element">
+		<appender-ref ref="FILE_LOGING" />
+	</logger>
+
+	<logger name="silvio.vuk.element.dao" additivity="false">
+		<appender-ref ref="FILE_DATABASE" />
+	</logger>
+
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
